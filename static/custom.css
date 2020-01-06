@@ -23,7 +23,12 @@ body {
 .btn-primary:active,
 .btn-primary:visited,
 .btn-primary:focus {
-    background-color: #dffef0 !important;
+    background-color: #dffef0;
     border-color: #dffef0;
     color: #212529;
+}
+
+.btn-primary:hover {
+    background-color: #afcdbf;
+    border-color: #a5c3b5;
 }
