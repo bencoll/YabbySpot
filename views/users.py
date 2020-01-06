@@ -18,4 +18,12 @@ def login_user():
 
 @user_blueprint.route('/logout')
 def logout_user():
-    return 'users.logout_user'
+    if session.get('email') is None:
+        flash("You cannot do that as you are not logged in.", "warning")
+    session.pop('email', None)
+    return redirect(url_for('index'))
+
+
+@user_blueprint.route('/recover')
+def recover_account():
+    return 'users.recover_account GET'
