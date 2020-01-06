@@ -13,7 +13,7 @@ def register_user():
 
 @user_blueprint.route('/login')
 def login_user():
-    return 'users.login_user'
+    return render_template('user/login_form.html')
 
 
 @user_blueprint.route('/logout')
