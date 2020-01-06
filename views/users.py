@@ -1,12 +1,14 @@
-from flask import Blueprint
-
+from flask import Blueprint, request, render_template, session, redirect, url_for, flash
 
 user_blueprint = Blueprint('users', __name__)
 
 
-@user_blueprint.route('/register')
+@user_blueprint.route('/register', methods=['GET', 'POST'])
 def register_user():
-    return 'users.register_user'
+    if request.method == 'POST':
+        # User has submitted information for registration
+        return 'users.register_user POST'
+    return render_template('user/register_form.html')
 
 
 @user_blueprint.route('/login')

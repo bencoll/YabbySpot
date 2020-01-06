@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% set active_page = "register" %}
+{% block content %}
+<div class="d-flex justify-content-center">
+    <!-- Default form login -->
+    <form class="text-center border w-50 p-5" method="post">
+
+        <p class="h4 mb-4">Sign up</p>
+
+        <div class="form-row mb-4">
+            <div class="col">
+                <!-- First name -->
+                <input type="text" id="firstName" class="form-control" placeholder="First name">
+            </div>
+            <div class="col">
+                <!-- Last name -->
+                <input type="text" id="lastName" class="form-control" placeholder="Last name">
+            </div>
+        </div>
+
+        <!-- Email -->
+        <input type="email" id="email" class="form-control mb-4" placeholder="Email">
+        <!-- Password -->
+        <input type="password" id="password" class="form-control" placeholder="Password">
+        <small id="passwordHelpBlock" class="form-text text-muted mb-4">
+            At least 8 characters and 1 digit
+        </small>
+
+        <!-- Sign in button -->
+        <button class="btn btn-secondary w-75 mb-3" type="submit">Sign in</button>
+    </form>
+</div>
+{% endblock %}
