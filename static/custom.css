@@ -3,5 +3,27 @@ body {
 }
 
 .navbar {
-    margin-bottom: 0px;
+    margin-bottom: 0;
+}
+
+.bg-pink {
+    background-color: #FDB9C8 !important;
+}
+
+.bg-light-pink {
+    background-color: #FEDFE6 !important;
+}
+
+.bg-lighter-pink {
+    background-color: #FEF4F6 !important;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: #dffef0 !important;
+    border-color: #dffef0;
+    color: #212529;
 }
