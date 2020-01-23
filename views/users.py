@@ -1,4 +1,5 @@
 from flask import Blueprint, request, render_template, session, redirect, url_for, flash
+from common.decorators import requires_admin
 
 user_blueprint = Blueprint('users', __name__)
 
@@ -25,5 +26,6 @@ def logout_user():
 
 
 @user_blueprint.route('/recover')
+@requires_admin
 def recover_account():
     return 'users.recover_account GET'
