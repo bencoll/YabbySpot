@@ -4,7 +4,7 @@ from typing import Dict
 
 
 class Database:
-    URI = os.environ.get("MONGODB_URI")
+    URI = os.environ.get("MONGODB_URL")
     DATABASE = pymongo.MongoClient(URI).get_default_database()
 
     def __init__(self, database: str):
@@ -12,7 +12,7 @@ class Database:
 
     @staticmethod
     def insert(collection: str, data: Dict):
-        Database.DATABASE[collection].insert(data)
+        Database.DATABASE[collection].insert_one(data)
 
     @staticmethod
     def find(collection: str, query: Dict) -> pymongo.cursor:
@@ -24,8 +24,8 @@ class Database:
 
     @staticmethod
     def update(collection: str, query: Dict, data: Dict):
-        Database.DATABASE[collection].update(query, data, upsert=True)
+        Database.DATABASE[collection].update_one(query, data, upsert=True)
 
     @staticmethod
     def remove(collection: str, query: Dict):
-        Database.DATABASE[collection].remove(query)
+        Database.DATABASE[collection].delete_one(query)
