@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% set active_page = "login" %}
+{% block content %}
+<div class="d-flex justify-content-center">
+    <!-- Default form login -->
+    <form class="text-center border w-50 p-5" method="post">
+
+        <p class="h4 mb-4">Sign in</p>
+
+        <!-- Email -->
+        <input type="email" id="email" name="email" class="form-control mb-4" placeholder="Email">
+        <!-- Password -->
+        <input type="password" id="password" name="password" class="form-control mb-4" placeholder="Password">
+        <div>
+            <!-- Forgot password -->
+            <!-- TODO: Implement forgotten password -->
+            <a href="{{ url_for('users.recover_account') }}">Forgot password?</a>
+        </div>
+
+        <!-- Sign in button -->
+        <button class="btn btn-secondary w-75 my-4" type="submit">Sign in</button>
+
+        <!-- Register -->
+        <p>Not a member?
+            <a href="{{ url_for('users.register_user') }}">Register</a>
+        </p>
+    </form>
+</div>
+{% endblock %}

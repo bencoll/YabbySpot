@@ -19,7 +19,6 @@ body {
 }
 
 .btn-primary,
-.btn-primary:hover,
 .btn-primary:active,
 .btn-primary:visited,
 .btn-primary:focus {
@@ -31,4 +30,18 @@ body {
 .btn-primary:hover {
     background-color: #afcdbf;
     border-color: #a5c3b5;
+}
+
+.btn-secondary,
+.btn-secondary:active,
+.btn-secondary:visited,
+.btn-secondary:focus {
+    background-color: #88a6cd;
+    border-color: #88a6cd;
+    color: #fff;
+}
+
+.btn-secondary:hover {
+    background-color: #7492b9;
+    border-color: #6483aa;
 }

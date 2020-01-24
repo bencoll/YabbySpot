@@ -1,5 +1,7 @@
 import os
 from flask import Flask, render_template
+
+from common.decorators import requires_writer
 from views.gabby import gabby_blueprint
 from views.poems import poem_blueprint
 from views.stories import story_blueprint
@@ -23,6 +25,7 @@ def index():
 
 
 @app.route('/new')
+@requires_writer
 def new_post():
     return render_template('post.html')
 

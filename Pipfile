@@ -9,6 +9,8 @@ verify_ssl = true
 flask = "*"
 python-dotenv = "*"
 requests = "*"
+pymongo = "*"
+passlib = "*"
 
 [requires]
 python_version = "3.8"
