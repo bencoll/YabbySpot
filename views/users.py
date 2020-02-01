@@ -1,6 +1,6 @@
 from flask import Blueprint, request, render_template, session, redirect, url_for, flash
 from common import CustomErrors
-from common.decorators import requires_admin
+from common.decorators import requires_admin, requires_login
 from models.user import User
 
 user_blueprint = Blueprint('users', __name__)
@@ -44,6 +44,7 @@ def login_user():
 
 
 @user_blueprint.route('/logout')
+@requires_login
 def logout_user():
     if session.get('email') is None:
         flash("You cannot do that as you are not logged in.", "error")
