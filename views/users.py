@@ -39,7 +39,7 @@ def login_user():
             session['name'] = User.find_by_email(email).first_name
             return redirect(url_for('index'))
         except CustomErrors.CustomError as e:
-            flash(e.message, 'error')
+            flash(e.message, 'danger')
     return render_template('user/login_form.html')
 
 
