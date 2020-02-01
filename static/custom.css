@@ -6,6 +6,10 @@ body {
     margin-bottom: 0;
 }
 
+.bg-lavender {
+    background-color: #E6E6FA !important;
+}
+
 .bg-pink {
     background-color: #FDB9C8 !important;
 }
