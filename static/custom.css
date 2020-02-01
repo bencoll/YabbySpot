@@ -49,3 +49,8 @@ body {
     background-color: #7492b9;
     border-color: #6483aa;
 }
+
+.vl {
+    border-left: 1px solid rgba(0, 0, 0, 0.4);
+    height: auto;
+}
