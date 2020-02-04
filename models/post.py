@@ -2,6 +2,8 @@ import uuid
 from dataclasses import dataclass, field
 from datetime import datetime
 
+from common import Database
+
 
 @dataclass(init=True, repr=True, eq=True)
 class Post:
@@ -10,9 +12,10 @@ class Post:
     author: str
     title: str
     subtitle: str
-    date_created: datetime
-    date_last_edited: datetime
+    content: str
     featured: bool = False
+    date_created: datetime = None
+    date_last_edited: datetime = None
     _id: str = field(repr=False, default_factory=lambda: uuid.uuid4().hex)
 
     def json(self):
@@ -25,3 +28,13 @@ class Post:
             'date_last_edited': self.date_last_edited,
             'featured': self.featured
         }
+
+    def save_to_db(self):
+        if self.date_created is None:
+            # This case occurs when a new post is submitted
+            self.date_created = datetime.now()
+            self.date_last_edited = self.date_created
+        elif self.date_last_edited is None:
+            # This case happens when a post is edited
+            self.date_last_edited = datetime.now()
+        Database.update(self.collection, {'_id': self._id}, self.json())

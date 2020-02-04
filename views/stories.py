@@ -1,4 +1,6 @@
-from flask import Blueprint, request, render_template
+from flask import Blueprint, request, render_template, flash
+
+from models.post import Post
 
 story_blueprint = Blueprint('stories', __name__)
 
@@ -16,5 +18,12 @@ def index():
 @story_blueprint.route('/new', methods=['GET', 'POST'])
 def new_story():
     if request.method == 'POST':
-        pass
+        title = request.form['title']
+        subtitle = request.form['subtitle']
+        author = request.form['author']
+        content = request.form['content']
+        featured = True if request.form.get('featured', 'off') == 'on' else False
+        Post(author=author, title=title, subtitle=subtitle,
+             content=content, featured=featured).save_to_db()
+        flash(f"Your new post has been saved; '{title}'.", "success")
     return render_template("new_post.html", post="Story")
