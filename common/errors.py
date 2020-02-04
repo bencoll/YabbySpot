@@ -1,19 +1,19 @@
-class CustomError(Exception):
+class UserError(Exception):
     def __init__(self, message):
         self.message = message
 
 
-class UserNotFoundError(CustomError):
+class UserNotFoundError(UserError):
     pass
 
 
-class UserAlreadyRegisteredError(CustomError):
+class UserAlreadyRegisteredError(UserError):
     pass
 
 
-class InvalidEmailError(CustomError):
+class InvalidEmailError(UserError):
     pass
 
 
-class IncorrectPasswordError(CustomError):
+class IncorrectPasswordError(UserError):
     pass

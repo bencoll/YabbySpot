@@ -21,7 +21,7 @@ def register_user():
             session['name'] = first_name
             flash("You are now logged in. Welcome!", 'success')
             return redirect(url_for('index'))
-        except CustomErrors.CustomError as e:
+        except CustomErrors.UserError as e:
             flash(e.message, 'danger')
     return render_template('user/register_form.html')
 
@@ -38,7 +38,7 @@ def login_user():
             session['email'] = email
             session['name'] = User.find_by_email(email).first_name
             return redirect(url_for('index'))
-        except CustomErrors.CustomError as e:
+        except CustomErrors.UserError as e:
             flash(e.message, 'danger')
     return render_template('user/login_form.html')
 
