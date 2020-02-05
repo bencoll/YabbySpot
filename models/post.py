@@ -26,7 +26,8 @@ class Post:
             'subtitle': self.subtitle,
             'date_created': self.date_created,
             'date_last_edited': self.date_last_edited,
-            'featured': self.featured
+            'featured': self.featured,
+            'content': self.content
         }
 
     def save_to_db(self):
