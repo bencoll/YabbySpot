@@ -1,6 +1,7 @@
 import uuid
 from dataclasses import dataclass, field
 from datetime import datetime
+from typing import List
 
 from common import Database
 
@@ -13,6 +14,7 @@ class Post:
     title: str
     subtitle: str
     content: str
+    type: str
     featured: bool = False
     date_created: datetime = None
     date_last_edited: datetime = None
@@ -39,3 +41,8 @@ class Post:
             # This case happens when a post is edited
             self.date_last_edited = datetime.now()
         Database.update(self.collection, {'_id': self._id}, self.json())
+
+    @classmethod
+    def load_many(cls, query: str = None) -> List:
+        db_elements = Database.find(cls.collection, {})
+        return [cls(**elem) for elem in db_elements]
