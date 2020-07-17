@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+    <!-- Post Content Column -->
+    <div class="row">
+        <div class="col-lg-8">
+            <header class="mb-2">
+                <h1>{{ post }} Posts</h1>
+            </header>
+            <section>
+                {% for post in posts %}
+                    <div class="list-group mb-2">
+                        <div class="list-group-item flex-column">
+                            <div class="d-flex align-items-end">
+                                <h4 class="list-group-item-heading">{{ post.title }}</h4>
+                                <h6 class="mx-2 mb-2-5">{{ post.subtitle }}</h6>
+                            </div>
+                            <p class="d-flex">
+                                {{ post.content }}
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </section>
+        </div>
+        {% include 'sidebar.html' %}
+    </div>
+{% endblock %}
