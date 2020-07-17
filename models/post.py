@@ -13,8 +13,8 @@ class Post:
     author: str
     title: str
     subtitle: str
+    post_type: str
     content: str
-    type: str
     featured: bool = False
     date_created: datetime = None
     date_last_edited: datetime = None
@@ -26,10 +26,11 @@ class Post:
             'author': self.author,
             'title': self.title,
             'subtitle': self.subtitle,
+            'post_type': self.post_type,
+            'content': self.content,
+            'featured': self.featured,
             'date_created': self.date_created,
             'date_last_edited': self.date_last_edited,
-            'featured': self.featured,
-            'content': self.content
         }
 
     def save_to_db(self):
@@ -43,6 +44,6 @@ class Post:
         Database.update(self.collection, {'_id': self._id}, self.json())
 
     @classmethod
-    def load_many(cls, query: str = None) -> List:
-        db_elements = Database.find(cls.collection, {})
+    def load_all_by_type(cls, post_type: str = None) -> List:
+        db_elements = Database.find(cls.collection, {"type": post_type})
         return [cls(**elem) for elem in db_elements]

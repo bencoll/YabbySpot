@@ -50,6 +50,10 @@ body {
     border-color: #6483aa;
 }
 
+.mb-2-5 {
+    margin-bottom: 0.6rem !important;
+}
+
 .vl {
     border-left: 1px solid rgba(0, 0, 0, 0.4);
     height: auto;

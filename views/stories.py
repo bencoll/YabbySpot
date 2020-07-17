@@ -11,8 +11,8 @@ def index():
     Collect list of stories and display them as cards to be selected
     :return: stories page with list of stories
     """
-    stories = Post.load_many()
-    return render_template("posts_list.html", posts=stories)
+    stories = Post.load_all_by_type()
+    return render_template("posts_list.html", post="Story", posts=stories)
 
 
 @story_blueprint.route('/new', methods=['GET', 'POST'])
@@ -24,7 +24,7 @@ def new_story():
         content = request.form['content']
         featured = True if request.form.get('featured', 'off') == 'on' else False
         Post(author=author, title=title, subtitle=subtitle,
-             content=content, type='story', featured=featured)\
+             content=content, post_type='story', featured=featured)\
             .save_to_db()
         flash(f"Your new post has been saved; '{title}'.", "success")
     return render_template("new_post.html", post="Story")

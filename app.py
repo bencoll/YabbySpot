@@ -29,7 +29,7 @@ def index():
 @requires_login
 @requires_writer
 def new_post():
-    return render_template('post.html')
+    return render_template('new_post.html')
 
 
 if __name__ == '__main__':
